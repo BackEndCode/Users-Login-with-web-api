@@ -1,0 +1,2 @@
+# Users-Login-with-web-api
+Project is based on https://jsonplaceholder.typicode.com/ website which provides free json response related to users, posts, profile, comments, photos. I tried to login user using this API and then fetching all the related details like profile, posts etc. I have used retrofit as Library to interact with web API and used room for caching API response. Navigation Drawer added for navigation of the user and used MVVM structure to make it easy for testing and expandable.
