@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.1484375" />
+        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1421875" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_photos_layout.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_posts_layout.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/fragment_todo_layout.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/posts_item_layout.xml" value="0.3511450381679389" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/menu/main.xml" value="0.24583333333333332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

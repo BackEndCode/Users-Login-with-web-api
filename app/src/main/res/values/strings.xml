@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Users Login Test</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="user_logged_in">Logged in successfully</string>
+    <string name="nav_header_title">nav_title</string>
+    <string name="nav_header_subtitle">nav_subtitle</string>
+    <string name="nav_header_desc">Nav Desciption for the drawer</string>
+    <string name="menu_photos">Photos</string>
+    <string name="menu_todos">Todos</string>
+    <string name="menu_posts">Posts</string>
+    <string name="action_logout">Logout</string>
+    <string name="preference_file_key">users_prefs</string>
+    <string name="saved_user_id_key">saved_user_id_key</string>
+</resources>
