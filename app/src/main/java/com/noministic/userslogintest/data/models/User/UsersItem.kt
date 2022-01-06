@@ -5,9 +5,9 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.noministic.userslogintest.others.Others
+import com.noministic.userslogintest.others.Constants
 
-@Entity(tableName = Others.USERS_TABLE_NAME)
+@Entity(tableName = Constants.USERS_TABLE_NAME)
 data class UsersItem @Ignore constructor(
     @Ignore
     @SerializedName("address")

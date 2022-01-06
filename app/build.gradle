@@ -82,4 +82,10 @@ dependencies {
     //android navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    //executor rule
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
+    androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    androidTestImplementation "android.arch.core:core-testing:1.1.1"
 }

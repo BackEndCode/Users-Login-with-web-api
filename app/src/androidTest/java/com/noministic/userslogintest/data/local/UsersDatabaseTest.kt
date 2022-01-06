@@ -40,6 +40,6 @@ class UsersDatabaseTest {
 
     @After
     fun tearDown() {
-
+        db.close()
     }
 }

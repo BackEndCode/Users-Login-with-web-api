@@ -6,7 +6,7 @@ import com.noministic.userslogintest.data.DefaultRepository
 import com.noministic.userslogintest.data.local.UsersDAO
 import com.noministic.userslogintest.data.local.UsersDatabase
 import com.noministic.userslogintest.data.remote.ApiRequestInterface
-import com.noministic.userslogintest.others.Others
+import com.noministic.userslogintest.others.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +22,7 @@ object AppModule {
     @Provides
     @Singleton
     fun providesApiRequestInterface(): ApiRequestInterface =
-        Retrofit.Builder().baseUrl(Others.BASE_URL)
+        Retrofit.Builder().baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(ApiRequestInterface::class.java)
 
@@ -30,7 +30,7 @@ object AppModule {
     @Singleton
     fun providesUsersDao(@ApplicationContext context: Context): UsersDAO = Room.databaseBuilder(
         context,
-        UsersDatabase::class.java, Others.USERS_DATABASE_NAME
+        UsersDatabase::class.java, Constants.USERS_DATABASE_NAME
     ).build().usersDao()
 
     @Provides
