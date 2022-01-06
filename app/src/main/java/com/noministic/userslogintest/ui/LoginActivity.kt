@@ -1,7 +1,5 @@
 package com.noministic.userslogintest.ui
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -48,16 +46,8 @@ class LoginActivity : AppCompatActivity() {
                     this, getString(R.string.user_logged_in),
                     Toast.LENGTH_LONG
                 ).show()
-                gotoMainAcitivity()
+                viewModel.gotoMainAcitivity()
             }
         })
     }
-
-    fun gotoMainAcitivity() {
-        val intent = Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-        }
-        startActivity(intent)
-    }
-
 }

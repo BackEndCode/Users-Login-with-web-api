@@ -2,6 +2,7 @@ package com.noministic.userslogintest.viewmodels
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,6 +12,7 @@ import com.noministic.userslogintest.R
 import com.noministic.userslogintest.data.DefaultRepository
 import com.noministic.userslogintest.data.models.User.UsersItem
 import com.noministic.userslogintest.others.Status
+import com.noministic.userslogintest.ui.MainActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,7 +33,7 @@ class LoginViewModel @Inject constructor(
     fun getUser() {
         viewModelScope.launch {
             val response = defaultRepository.getLoggedInUser()
-            if (response.status == Status.SUCCESS) {
+            if (response?.status == Status.SUCCESS) {
                 response.data.let { _user.value = it }
                 _loading.value = false
             }
@@ -57,9 +59,8 @@ class LoginViewModel @Inject constructor(
                             it.username == username && it.email == userEmail
                         }
                         if (list.isNotEmpty()) {
-                            insertUserToDB(data[0])
+                            storeUserLocally(data[0])
                             _user.value = data[0]
-                            storeUserIdToPrefs(data[0].id)
                             Log.e("NOMI", "USER FOUND")
                         } else {
                             _errorMessage.value = "User Not found"
@@ -71,6 +72,12 @@ class LoginViewModel @Inject constructor(
 
     }
 
+    private fun storeUserLocally(usersItem: UsersItem) {
+        insertUserToDB(usersItem)
+        storeUserIdToPrefs(usersItem.id)
+
+    }
+
 
     private fun insertUserToDB(usersItem: UsersItem) {
         viewModelScope.launch {
@@ -79,7 +86,7 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun storeUserIdToPrefs(userId: Int) {
+    private fun storeUserIdToPrefs(userId: Int) {
         val context = application.applicationContext
         val sharedPref = context.getSharedPreferences(
             context.getString(R.string.preference_file_key),
@@ -89,5 +96,12 @@ class LoginViewModel @Inject constructor(
             putInt(context.getString(R.string.saved_user_id_key), userId)
             apply()
         }
+    }
+
+    fun gotoMainAcitivity() {
+        val intent = Intent(application.applicationContext, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+        application.applicationContext.startActivity(intent)
     }
 }

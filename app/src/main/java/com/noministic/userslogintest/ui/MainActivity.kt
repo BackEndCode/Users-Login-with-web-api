@@ -2,6 +2,8 @@ package com.noministic.userslogintest.ui
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
@@ -13,13 +15,14 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.noministic.userslogintest.R
 import com.noministic.userslogintest.databinding.ActivityMainBinding
+import com.noministic.userslogintest.viewmodels.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration
-
+    private val mainActivityViewModel: MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,12 +44,29 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        observeViewModel()
+    }
+
+    fun observeViewModel() {
+        mainActivityViewModel.userLoggedOut.observe(this, {
+            if (it)
+                mainActivityViewModel.gotoLoginActivity()
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_logout -> {
+                mainActivityViewModel.logOut()
+            }
+        }
+        return false
     }
 
     override fun onSupportNavigateUp(): Boolean {

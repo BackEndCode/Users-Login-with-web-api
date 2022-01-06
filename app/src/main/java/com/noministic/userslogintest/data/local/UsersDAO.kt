@@ -12,5 +12,8 @@ interface UsersDAO {
     suspend fun insertUser(usersItem: UsersItem)
 
     @Query("select * from USERS limit 1")
-    suspend fun getLoggedInUser(): UsersItem
+    suspend fun getLoggedInUser(): UsersItem?
+
+    @Query("delete from USERS where id=:userId")
+    suspend fun removeUser(userId: Int): Int
 }
